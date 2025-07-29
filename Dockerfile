@@ -42,11 +42,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
-# Créer un utilisateur non-root pour la sécurité
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser
-
 # Définir le répertoire de travail
 WORKDIR /app
 
@@ -58,12 +53,6 @@ RUN npm ci --only=production && npm cache clean --force
 
 # Copier le code source
 COPY . .
-
-# Changer la propriété des fichiers à l'utilisateur pptruser
-RUN chown -R pptruser:pptruser /app
-
-# Basculer vers l'utilisateur non-root
-USER pptruser
 
 # Exposer le port
 EXPOSE 3000
