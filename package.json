@@ -12,5 +12,6 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "puppeteer-core": "^24.15.0"
-  }
+  },
+  "type": "module"
 }
