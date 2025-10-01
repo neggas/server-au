@@ -1,0 +1,150 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-blue: 0 170 255; /* RGB values */
+  --accent-cyan: 0 242 255; /* RGB values */
+  --dark-bg: 10 15 31; /* RGB values */
+  --dark-card: 16 24 44; /* RGB values */
+  --dark-border: 33 43 76; /* RGB values */
+  --text-primary: 224 229 240; /* RGB values */
+  --text-secondary: 138 148 166; /* RGB values */
+  --success-green: 0 255 133; /* RGB values */
+  --warning-orange: 255 174 0; /* RGB values */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-dark-bg text-text-primary antialiased;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 1% 1%, rgba(var(--primary-blue), 0.15), transparent 25%),
+                    radial-gradient(circle at 99% 99%, rgba(var(--accent-cyan), 0.15), transparent 25%);
+}
+
+.font-serif {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.glass-effect {
+  @apply bg-dark-card/80 backdrop-blur-lg border border-dark-border shadow-2xl shadow-black/20;
+}
+
+.legal-gradient {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #10182c 100%);
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary-blue/20 hover:-translate-y-1 hover:border-primary-blue/50;
+}
+
+.btn-primary {
+  @apply bg-primary-blue text-white font-semibold py-3 px-6 rounded-lg shadow-lg shadow-primary-blue/30 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-primary-blue/50 border-2 border-transparent;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+}
+
+.step-indicator {
+  @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300;
+}
+
+.step-active {
+  @apply bg-primary-blue text-white shadow-lg shadow-primary-blue/30;
+}
+
+.step-completed {
+  @apply bg-success-green text-dark-bg;
+}
+
+.step-pending {
+  @apply bg-dark-border text-text-secondary;
+}
+
+.upload-zone {
+  @apply border-2 border-dashed border-dark-border rounded-xl p-8 text-center transition-all duration-300 hover:border-primary-blue hover:bg-dark-card cursor-pointer;
+}
+
+.upload-zone.dragover {
+  @apply border-primary-blue bg-dark-card scale-105 shadow-lg shadow-primary-blue/20;
+}
+
+.timeline-item {
+  @apply relative pl-8 pb-8 border-l-2 border-dark-border last:border-l-0;
+}
+
+.timeline-dot {
+  @apply absolute -left-2.5 top-0 w-5 h-5 rounded-full border-4 border-dark-bg shadow-md;
+}
+
+.timeline-completed {
+  @apply bg-success-green;
+}
+
+.timeline-current {
+  @apply bg-primary-blue;
+}
+.timeline-current::after {
+  content: '';
+  @apply absolute inset-0 rounded-full bg-primary-blue animate-ping;
+}
+
+.timeline-pending {
+  @apply bg-dark-border;
+}
+
+.legal-disclaimer {
+  @apply bg-warning-orange/10 border-l-4 border-warning-orange p-4 rounded-r-lg;
+}
+
+.confidence-bar {
+  @apply h-2.5 rounded-full overflow-hidden bg-dark-border;
+}
+
+.confidence-fill {
+  @apply h-full transition-all duration-500 ease-out;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+}
+
+.document-preview {
+  @apply bg-dark-card rounded-lg shadow-md p-4 border border-dark-border hover:shadow-lg hover:border-primary-blue/50 transition-all duration-200;
+}
+
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-dark-border text-text-secondary;
+}
+
+.status-processing {
+  @apply bg-primary-blue/20 text-primary-blue;
+}
+
+.status-completed {
+  @apply bg-success-green/20 text-success-green;
+}
+
+.status-error {
+  @apply bg-red-500/20 text-red-400;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
